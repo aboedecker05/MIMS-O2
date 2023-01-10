@@ -15,7 +15,7 @@ library(tidyverse)
 
 Code below used to create Figure 1
 
-Data accessed via a Web of Science search on October 18, 2022. Terms searched include "MIMS and Nitrogen Fixation", "MIMS and Denitrification", and "MIMS and Nitrogen Fixation and Denitrification". Duplicate entries were removed. Search produced 90 papers.
+Data accessed via a Web of Science search on January 10, 2023. Terms searched include "MIMS and Nitrogen Fixation", "MIMS and Denitrification", and "MIMS and Nitrogen Fixation and Denitrification" between 1994-01-01 and 2022-12-31. Duplicate entries were removed. Search produced 90 papers.
 
 ```{r}
 citations <- read.csv("citations.csv", header = TRUE) #number of citations each year
@@ -31,10 +31,10 @@ ggplot() +
   geom_col(data = pubs, aes(x = Year, y = Pubs, fill = Type), position = position_dodge(), width = 1, color = "black") +
   geom_line(data = citations, aes(x = Year, y = Citations/50), size = 1) + #rescaled to add in second axis
   scale_fill_manual(name = "Publications", labels = c("Total", bquote(""^'29,30'*'N'[2])), values = c("#56B4E9", "#E69F00")) +
-  scale_x_continuous(name = "", seq(1992,2022,2)) +
+  scale_x_continuous(name = "", seq(1994,2022,2)) +
   scale_y_continuous(name = "Publications", limits = c(0,8), sec.axis = sec_axis(~.*50, name="Citations")) +
   theme_classic(base_size = 16) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = c(0.16,0.85)) +
-  geom_segment(aes(x = 1992, y = 5.63, xend = 1993.25, yend = 5.63), size = 1) +
-  annotate("text", x = 1996, y = 5.63, label= "Citations", size = 5)
+  geom_segment(aes(x = 1994, y = 5.63, xend = 1995.25, yend = 5.63), size = 1) +
+  annotate("text", x = 1997.75, y = 5.63, label= "Citations", size = 5)
 ```
